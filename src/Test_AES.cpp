@@ -8,6 +8,17 @@ using namespace std;
 
 const char delim[2] = " ";
 
+void test_GFSBox_KAT_128(char key[32], char plaintext[32], char ciphertext[32]){
+    char result[32];
+    AES(key, plaintext, result);
+    if(result != ciphertext){
+        cout << "Key: "<< key << endl;
+        cout << "Plaintext: " <<  plaintext << endl;
+        cout << "Ciphertext: " << ciphertext << endl;
+        cout << endl;
+    }
+}
+
 int main(){
     char key[128];
     char plaintext[128];
@@ -21,10 +32,7 @@ int main(){
         strcpy(key, line.c_str());
 
         while(newFile >> plaintext >> ciphertext){
-            cout << "Key: "<< key << endl;
-            cout << "Plaintext: " <<  plaintext << endl;
-            cout << "Ciphertext: " << ciphertext << endl;
-            cout << endl;
+            test_GFSBox_KAT_128(key, plaintext, ciphertext);
         }
         newFile.close();
     }
