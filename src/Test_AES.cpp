@@ -12,6 +12,7 @@ void test_GFSBox_KAT_128(char key[32], char plaintext[32], char ciphertext[32]){
     char result[32];
     AES(key, plaintext, result);
     if(result != ciphertext){
+        cout << "TEST FAILED" << endl;
         cout << "Key: "<< key << endl;
         cout << "Plaintext: " <<  plaintext << endl;
         cout << "Ciphertext: " << ciphertext << endl;
